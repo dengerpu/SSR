@@ -1,6 +1,12 @@
 <template>
   <div class="d-layout">
-        <nuxt/>
+    <!-- 跳转  声明式跳转 router-link -->
+    <nuxt-link to="/">首页</nuxt-link>
+    <nuxt-link to="/goods">商品页面</nuxt-link>
+    <nuxt-link to="/userinfo">用户信息</nuxt-link>
+    <nuxt-link :to="{name:'login',query:{a:11,b:22}}">登陆页面</nuxt-link>
+    <!-- 展示区  ~~ router-view -->
+    <nuxt />
   </div>
 </template>
 
