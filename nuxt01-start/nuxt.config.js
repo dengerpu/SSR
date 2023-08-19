@@ -37,6 +37,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    //nuxt.config文件,~代表根目录
+    '~/plugins/router'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
