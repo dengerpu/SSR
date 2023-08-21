@@ -29,6 +29,11 @@ export default {
     }
   },
 
+  //定义系统默认loading效果
+  // loading: {color:'#399', height: ' 3px'},
+  // 使用自定义组件
+  loading: '~/components/loadding.vue',
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   // 全局样式
   css: [
