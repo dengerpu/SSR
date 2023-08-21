@@ -44,8 +44,11 @@ export default {
   },
 
   // 读数据，返回给vuex
-  fetch({ store }) {
+  async fetch({ store, $axios}) {
     // 异步业务逻辑，读取服务器数据提交给vuex
+    // 测试跨域数据
+    let res = await $axios({url: '/api/sys/user'})
+    console.log('读取的跨域数据', res.data)
     console.log("fetch");
   },
   //SSR && CSR

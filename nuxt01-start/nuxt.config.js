@@ -38,7 +38,11 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     //nuxt.config文件,~代表根目录
-    '~/plugins/router'
+    '~/plugins/router',
+    {
+      src: '~/plugins/axios',
+      ssr: true // 服务器
+    }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -47,6 +51,20 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
   ],
+
+  axios:{
+    proxy:true,//开启axios跨域
+    // prefix:'/api',//baseUrl
+  },
+  proxy:{
+    '/api/':{
+      target:'http://www.006969.xyz:8000',//代理转发的地址
+      changeOrigin:true,
+      pathRewrite:{
+        '^/api':''
+      }
+    }
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
