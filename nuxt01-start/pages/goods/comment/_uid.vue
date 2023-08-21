@@ -6,10 +6,7 @@
 
 <script>
 export default {
-  // 参数有效性判断
-  validate({ params, query }) {
-    return  typeof params.uid === 'number'
-  }
+
 }
 </script>
 

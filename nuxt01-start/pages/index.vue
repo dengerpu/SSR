@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>首页</h1>
+    <h3>{{title}}</h3>
   </div>
 </template>
 
@@ -32,13 +33,14 @@ export default {
     next(b1)
   },     
   // 读数据，返回给组件
-  asyncData(context) {
+  async asyncData({$axios}) {
     // 异步业务逻辑，读取服务器数据
-    console.log("asyncData");
+    let res = await $axios({url: '/data/list.json'})
+    console.log('读取到的静态数据', res.data)
     // 返回的数据会和data里面的数据合并
     return {
-      b: 2,
-    };
+      title: res.data.title
+    }
   },
 
   // 读数据，返回给vuex
