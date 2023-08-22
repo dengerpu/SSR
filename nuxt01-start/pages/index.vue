@@ -2,10 +2,12 @@
   <div>
     <h1>首页</h1>
     <h3>{{title}}</h3>
+    <button @click="getStore">点击修改vuex中的数据</button>
   </div>
 </template>
 
 <script>
+import {mapActions, mapGetters, mapState, mapMutations} from 'vuex'
 export default {
   name: "IndexPage",
   layout: "default",
@@ -89,5 +91,30 @@ export default {
       b: 1111,
     };
   },
+
+  methods:{
+    getStore(){
+      //编程式访问vuex
+
+      //发出actions请求给user模块
+      // this.$store.dispatch('user/A_UPDATE_USER',{err:0,msg:'登录成功',token:'假token',data:{title:"user模块的actions提交过来的数据"}})
+      // this.A_UPDATE_USER({err:0,msg:'登录成功',token:'假token',data:{title:"123"}})
+      
+      //发出mutations请求给user模块
+      // this.$store.commit('user/M_UPDATE_USER',{err:0,msg:'登录成功',token:'假token',data:{title:"组件携带过去的数据"}})
+      this.M_UPDATE_USER({err:0,msg:'登录成功',token:'假token',data:{title:"456"}})
+    },
+
+    ...mapActions('user',['A_UPDATE_USER']),
+    ...mapMutations('user',['M_UPDATE_USER']),
+  },
+
+  computed:{
+    xx(){},
+    ...mapGetters(['getNav']),
+    ...mapState(['bNav']),
+    ...mapState('user',['data']),
+    ...mapState({home:state=>state.home.data}),
+  }
 };
 </script>

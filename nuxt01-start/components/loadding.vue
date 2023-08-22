@@ -7,7 +7,7 @@ export default {
     loading: false,
   }),
   methods: {
-    // 这两个函数使nuxt为我们提供的
+    // 这两个函数使nuxt为我们提供的，一个是请求开始，一个是结束
     start() {
       this.loading = true;
     },
