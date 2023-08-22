@@ -1,21 +1,35 @@
 <template>
-  <div>
-    登陆页面
-    <button @click="login">登陆</button>
-  </div>
+  <div class="login">
+    <h3>登录</h3>
+    <el-divider></el-divider>
+    <el-input v-model="username" placeholder="请输入" class="mb">
+      <template slot="prepend">用户</template>
+    </el-input>
+    <el-input type="password" v-model="password" placeholder="请输入" class="mb">
+      <template slot="prepend">密码</template>
+    </el-input>
+    <div class="error">{{message}}</div>
+    <el-button type="primary" @click="login">登录</el-button>
+    <el-button @click="$router.push('/reg')">注册</el-button>
+  </div> 
 </template>
 
 <script>
 export default {
   name: 'login',
+  data:()=>({
+    username:'',
+    password:'',
+    message:''
+  }),
   methods: {
     login(){
       this.$axios({
         url:'/api/login',
         method:'post',
         data:{
-          username: 'admin',
-          password: '123456'
+          username: this.username,
+          password: this.password
         }
       }).then(
         res=>{
@@ -43,5 +57,18 @@ export default {
 </script>
 
 <style>
-
+.login{
+  width:35%;
+  height:auto;
+  position: absolute;
+  left:50%;top:50%;
+  margin-left:-17%;
+  transform: translateY(-50%)
+}
+.mb{
+  margin-bottom: 20px;
+}
+.error{
+  color:red
+}
 </style>

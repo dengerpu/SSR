@@ -1,3 +1,4 @@
+import { Message } from 'element-ui'
 export default function({$axios,redirect,route,store}){
     //基本配置
     $axios.defaults.timeout=10000;
@@ -14,6 +15,10 @@ export default function({$axios,redirect,route,store}){
     $axios.onResponse(res=>{
         console.log('响应拦截')
         if (res.data.code !== 200) {
+            Message({
+                message: res.data.message,
+                type: 'error'
+            })
             console.log('认证失败')            // 401 认证失败(token过期或失效或非法) 403 权限不足
             if (res.data.code === 401 || res.data.code === 403) {
             //   store.dispatch('user/logout')
