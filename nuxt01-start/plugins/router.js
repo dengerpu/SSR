@@ -6,7 +6,7 @@ export default ({app,redirect,params,query,store})=>{
         //next(true)/next(false)   
         //next( '/login ') ×  redirect 跳转函数 √
         // 注意：不能使用next来跳转，要使用redirect
-        // if (to.path === '/login') {
+        // if (to.path === '/login' || store.state.user.token != '') {
         //     next()
         // } else {
         //     redirect('/login')

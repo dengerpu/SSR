@@ -1,7 +1,8 @@
 <template>
   <div>
     <h1>首页</h1>
-    <h3>{{title}}</h3>
+    <!-- <h3>{{title}}</h3> -->
+    <p>{{data2}}</p>
     <button @click="getStore">点击修改vuex中的数据</button>
   </div>
 </template>
@@ -37,27 +38,29 @@ export default {
   // 读数据，返回给组件
   async asyncData({$axios}) {
     // 异步业务逻辑，读取服务器数据
-    let res = await $axios({url: '/data/list.json'})
-    console.log('读取到的静态数据', res.data)
-    // 返回的数据会和data里面的数据合并
-    return {
-      title: res.data.title
-    }
+    // let res = await $axios({url: '/data/list.json'})
+    // console.log('读取到的静态数据', res.data)
+    // // 返回的数据会和data里面的数据合并
+    // return {
+    //   title: res.data.title
+    // }
   },
 
   // 读数据，返回给vuex
   async fetch({ store, $axios}) {
     // 异步业务逻辑，读取服务器数据提交给vuex
     // 测试跨域数据
-    let res = await $axios({url: '/api/sys/user'})
-    console.log('读取的跨域数据', res.data)
-    console.log("fetch");
+    // let res = await $axios({url: '/api/sys/user'})
+    // console.log('读取的跨域数据', res.data)
+    // console.log("fetch");
   },
   //SSR && CSR
   beforeCreate() {
     console.log("beforeCreate");
   },
-  created() {
+  async created() {
+    let res = await this.$axios({url: '/api/sys/user'})
+    this.data2 = res.data
     // console.log('created',this)
     console.log("created");
   },
@@ -89,6 +92,7 @@ export default {
     return {
       a: 1,
       b: 1111,
+      data2: ''
     };
   },
 
@@ -97,12 +101,12 @@ export default {
       //编程式访问vuex
 
       //发出actions请求给user模块
-      // this.$store.dispatch('user/A_UPDATE_USER',{err:0,msg:'登录成功',token:'假token',data:{title:"user模块的actions提交过来的数据"}})
-      // this.A_UPDATE_USER({err:0,msg:'登录成功',token:'假token',data:{title:"123"}})
+      // this.$store.dispatch('user/A_UPDATE_USER',{token:'假token'})
+      // this.A_UPDATE_USER({token:'假token'})
       
       //发出mutations请求给user模块
-      // this.$store.commit('user/M_UPDATE_USER',{err:0,msg:'登录成功',token:'假token',data:{title:"组件携带过去的数据"}})
-      this.M_UPDATE_USER({err:0,msg:'登录成功',token:'假token',data:{title:"456"}})
+      // this.$store.commit('user/M_UPDATE_USER',{token:'假token'})
+      this.M_UPDATE_USER({token:'假token'})
     },
 
     ...mapActions('user',['A_UPDATE_USER']),

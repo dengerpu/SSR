@@ -5,22 +5,25 @@ export default function({$axios,redirect,route,store}){
     // 请求拦截
     $axios.onRequest(config => {
         console.log('请求拦截')
-        config.headers.token = 'eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI4YTZlNDk0MWFhZTI0OTViOGViYjllNzc1ZDQ5MWEzYiIsInN1YiI6IjEiLCJpc3MiOiJkZXAiLCJpYXQiOjE2OTI2MTQ5NDQsImV4cCI6MTY5MjcwMTM0NH0.GqanFI_WzYAfiaTFMcyk9xgNv5Aw2M0PlAiRF_bEyhY'
+        console.log(store.state.user.token)
+        config.headers.token = store.state.user.token
         return config
     })
 
     //响应拦截
     $axios.onResponse(res=>{
         console.log('响应拦截')
-        // if (res.code !== 200) {
-        //     consolelog('认证失败')            // 401 认证失败(token过期或失效或非法) 403 权限不足
-        //     if (res.code === 401) {
-        //       store.dispatch('user/logout')
-        //       redirect('/login?path='+route.fullPath)
-        //     }
-        // } else {
-        //     return res
-        // }
+        if (res.data.code !== 200) {
+            console.log('认证失败')            // 401 认证失败(token过期或失效或非法) 403 权限不足
+            if (res.data.code === 401 || res.data.code === 403) {
+            //   store.dispatch('user/logout')
+                store.commit('user/M_UPDATE_USER', {token: '' }) 
+                redirect('/login?path='+route.fullPath)
+            }
+        } else {
+            // 直接把需要的数据返回
+            return res.data
+        }
     })
 
     //错误处理
