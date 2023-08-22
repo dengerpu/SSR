@@ -32,10 +32,10 @@ export default {
   },
 
   // 组件独享后置守卫
-  beforeRouteLeave(to,from,next){
-    let b1 = window.confirm('是否要离开')
-    next(b1)
-  },     
+  // beforeRouteLeave(to,from,next){
+  //   let b1 = window.confirm('是否要离开')
+  //   next(b1)
+  // },     
   // 读数据，返回给组件
   async asyncData({$axios}) {
     // 异步业务逻辑，读取服务器数据
