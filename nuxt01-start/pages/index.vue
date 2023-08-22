@@ -2,6 +2,7 @@
   <div>
     <h1>首页</h1>
     <!-- <h3>{{title}}</h3> -->
+    <el-button type="primary">按钮</el-button>
     <p>{{data2}}</p>
     <button @click="getStore">点击修改vuex中的数据</button>
   </div>

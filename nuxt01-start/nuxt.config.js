@@ -37,7 +37,8 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   // 全局样式
   css: [
-    'assets/css/transition.css'
+    'assets/css/transition.css',
+    'element-ui/lib/theme-chalk/index.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -47,6 +48,11 @@ export default {
     {
       src: '~/plugins/axios',
       ssr: true // 服务器
+    },
+    {
+      src: "~/plugins/element-ui",
+      ssr:true, // 不支持ssr的插件只会在客户端运行不要给true
+      //mode: 'server'// client // v2.44
     }
   ],
 
@@ -79,5 +85,6 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    transpile:[ /^element-ui/] 
   }
 }
