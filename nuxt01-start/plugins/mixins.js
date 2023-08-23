@@ -14,3 +14,7 @@ import direc1 from '../assets/script/directives/direc1'
 import direc2 from '../assets/script/directives/direc2'
 Vue.directive('direc1',direc1)
 Vue.directive('direc2',direc2)
+
+// 全局组件
+import myButton from '../components/global/mybutton';
+Vue.component('my-button', myButton)

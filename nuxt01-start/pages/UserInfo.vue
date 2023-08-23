@@ -10,6 +10,9 @@
     <h3>全局指令使用</h3>
     <div v-direc1="'red'">direc1</div>
     <div v-direc2>{{title}}</div>
+    <hr>
+    <h3>全局组件使用</h3>
+    <my-button></my-button>
   </div> 
 </template>
 <script>
