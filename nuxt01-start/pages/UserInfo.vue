@@ -6,10 +6,19 @@
     <h3>全局过滤器使用</h3>
     <p>{{4 | fillzero}}</p>
     <span>{{1692779835608 | date}}</span>
+    <hr>
+    <h3>全局指令使用</h3>
+    <div v-direc1="'red'">direc1</div>
+    <div v-direc2>{{title}}</div>
   </div> 
 </template>
 <script>
 export default {
+  data() {
+    return {
+      title: '全局指令'
+    }
+  },
   mounted() {
     this.$show() //打印全局方法
   },

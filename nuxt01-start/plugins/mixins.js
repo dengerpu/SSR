@@ -7,3 +7,10 @@ Vue.prototype.$show=show//服务端钩子内部不可以使用，this不会执�
 //全局过滤器
 import * as filters from '../assets/script/filter';
 Object.keys(filters).forEach(key=>Vue.filter(key,filters[key]));
+
+
+//全局指令
+import direc1 from '../assets/script/directives/direc1'
+import direc2 from '../assets/script/directives/direc2'
+Vue.directive('direc1',direc1)
+Vue.directive('direc2',direc2)
