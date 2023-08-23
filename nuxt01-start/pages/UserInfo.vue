@@ -2,6 +2,10 @@
   <div class="user">
     <h3>用户</h3>
     <el-button @click="logout">注销</el-button>
+    <hr>
+    <h3>全局过滤器使用</h3>
+    <p>{{4 | fillzero}}</p>
+    <span>{{1692779835608 | date}}</span>
   </div> 
 </template>
 <script>
