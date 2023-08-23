@@ -53,7 +53,8 @@ export default {
       src: "~/plugins/element-ui",
       ssr:true, // 不支持ssr的插件只会在客户端运行不要给true
       //mode: 'server'// client // v2.44
-    }
+    },
+    '~/plugins/mixins'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
