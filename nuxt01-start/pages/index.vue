@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <h1>首页</h1>
     <!-- <h3>{{title}}</h3> -->
     <el-button type="primary">按钮</el-button>
@@ -123,3 +123,6 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+</style>
