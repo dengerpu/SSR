@@ -13,6 +13,8 @@
     <hr />
     <h3>全局组件使用</h3>
     <my-button></my-button>
+
+    <el-button onclick="alert($)">测试外部引入资源</el-button>
   </div>
 </template>
 <script>
@@ -24,8 +26,13 @@ export default {
   //     meta: [{ name: "keywords", content: '商品信息内容' }],
   //   };
   // },
-  head() {
-    return this.$seo('自定义商品标题','自定义商品描述信息',[])
+  // head() {
+  //   return this.$seo('自定义商品标题','自定义商品描述信息',[])
+  // },
+  head: {
+    script:[		
+      {src:'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'}
+    ]
   },
   data() {
     return {

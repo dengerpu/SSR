@@ -5,6 +5,17 @@
     <el-button type="primary">按钮</el-button>
     <p>{{data2}}</p>
     <button @click="getStore">点击修改vuex中的数据</button>
+    <hr>
+    <h4>内部资源指向</h4>
+    <!-- 相对路径找到一些需要压缩的资源 assets -->
+    <!-- <img src="../assets/img/btns.png" alt=""> -->
+    <img src="~assets/img/btns.png" alt="">
+     <!-- 绝对路径找到无需压缩的资源static -->
+     <img src="/img/bg.jpg" alt="">
+
+     <div class="bgimg">css指向需要压缩的资源</div>
+
+     <el-button onclick="alert($)">测试外部引入资源</el-button>
   </div>
 </template>
 
@@ -125,4 +136,8 @@ export default {
 </script>
 
 <style scoped>
+.bgimg {
+  /* background: url('../assets/img/btns.png') no-repeat; */
+  background: url('~/assets/img/btns.png') no-repeat;
+}
 </style>
